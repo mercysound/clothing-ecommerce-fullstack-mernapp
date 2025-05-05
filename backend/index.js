@@ -29,12 +29,12 @@ mongoose.connect(mongooseUri)
   // })
   
   // Serve static files from React app
-  // app.use(express.static(path.join(__dirname, 'build')));
+  app.use(express.static(path.join(__dirname, 'build')));
   
-  // // Catch-all route to serve React app
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-  // });
+  // Catch-all route to serve React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
   
   
   // API Creation (Api endpoint)
