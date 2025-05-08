@@ -39,7 +39,7 @@ mongoose.connect(mongooseUri)
   
   // API Creation (Api endpoint)
   app.get("/", (req, res)=>{
-      res.json({message:"Express App is Running"})
+      res.json({message:"Cloth Express App is Running"})
   })
   // Image Storage Engine function
   const storage = multer.diskStorage({
