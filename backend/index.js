@@ -23,10 +23,10 @@ mongoose.connect(mongooseUri)
 })
 
 
-// for the sake of the deploy fe&be
-app.get("/*", (req, res)=>{
-      res.sendFile(__dirname+"/build/index.html")
-  })
+// // for the sake of the deploy fe&be
+// app.get("/*", (req, res)=>{
+//       res.sendFile(__dirname+"/build/index.html")
+//   })
   
   // // Serve static files from React app
   // app.use(express.static(path.join(__dirname, 'build')));
@@ -295,13 +295,13 @@ app.post('/getcart', fetchUser, async (req, res)=>{
   res.json({data:userData.cartData})
 })
 
-app.listen(port, (error)=>{
-  if(!error){
-    console.log("Server Running on port" + port);
-  }
-  else
-  {
-    console.log("Error :" +error);
-   }
-})
+// app.listen(port, (error)=>{
+//   if(!error){
+//     console.log("Server Running on port" + port);
+//   }
+//   else
+//   {
+//     console.log("Error :" +error);
+//    }
+// })
 module.exports = app;
