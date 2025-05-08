@@ -28,13 +28,13 @@ mongoose.connect(mongooseUri)
 //       res.sendFile(__dirname+"/build/index.html")
 //   })
   
-// Serve static files from the React frontend build
-app.use(express.static(path.join(__dirname, "build")));
+// // Serve static files from the React frontend build
+// app.use(express.static(path.join(__dirname, "build")));
 
-// Catch-all route to serve React's index.html on unknown routes
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// // Catch-all route to serve React's index.html on unknown routes
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
   
   
   // API Creation (Api endpoint)
