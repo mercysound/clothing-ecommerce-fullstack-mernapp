@@ -292,8 +292,8 @@ app.post('/getcart', fetchUser, async (req, res)=>{
 // Serve static files from frontend
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
 
 // const fs = require("fs");
