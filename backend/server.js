@@ -287,14 +287,15 @@ app.post('/getcart', fetchUser, async (req, res)=>{
   let userData = await Users.findOne({_id:req.user.id})
   res.json({data:userData.cartData})
 })
- // Serve static files from React app
- app.use(express.static(path.join(__dirname, 'build')));
-  
- // Catch-all route to serve React app
- app.get('*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
- });
+
  
+ // Catch-all route to serve React app
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
+
 app.listen(port, (error)=>{
   if(!error){
     console.log("Server Running on port" + port);
