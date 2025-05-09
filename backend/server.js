@@ -295,6 +295,14 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
 
+const fs = require("fs");
+const buildPath = path.join(__dirname, "../frontend/build/index.html");
+
+if (!fs.existsSync(buildPath)) {
+  console.error("❌ Build not found. Did you run `npm run build` in frontend?");
+  process.exit(1);
+}
+
 app.listen(port, (error)=>{
   if(!error){
     console.log("Server Running on port" + port);
