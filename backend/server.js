@@ -289,7 +289,6 @@ app.post('/getcart', fetchUser, async (req, res)=>{
 })
 
  
- // Catch-all route to serve React app
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("/*", (req, res) => {
