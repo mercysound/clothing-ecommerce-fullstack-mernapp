@@ -31,7 +31,7 @@ mongoose.connect(mongooseUri)
  
   
   // API Creation (Api endpoint)
-  app.get("/", (req, res)=>{
+  app.get("/api", (req, res)=>{
       res.json({message:"Cloth Express App is Running"})
   })
   // Image Storage Engine function
@@ -46,14 +46,14 @@ mongoose.connect(mongooseUri)
 const upload = multer({storage:storage})
 
 
-// Creating Upload Endpoint for images
-app.use('/images', express.static('upload/images'));
+app.post("/upload", upload.single("product"), (req, res) => {
+  const protocol = req.protocol;
+  const host = req.get("host");
 
-app.post("/upload", upload.single('product'),(req, res)=>{
   res.json({
-    success:1,
-    image_url:`http://localhost:${port}/images/${req.file.filename}`
-  })
+    success: 1,
+    image_url: `${protocol}://${host}/images/${req.file.filename}`,
+  });
 });
 
 // Schema for Creating Products
