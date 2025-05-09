@@ -289,19 +289,20 @@ app.post('/getcart', fetchUser, async (req, res)=>{
 })
 
  
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+// Serve static files from frontend
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-const fs = require("fs");
-const buildPath = path.join(__dirname, "../frontend/build/index.html");
+// const fs = require("fs");
+// const buildPath = path.join(__dirname, "../frontend/build/index.html");
 
-if (!fs.existsSync(buildPath)) {
-  console.error("❌ Build not found. Did you run `npm run build` in frontend?");
-  process.exit(1);
-}
+// if (!fs.existsSync(buildPath)) {
+//   console.error("❌ Build not found. Did you run `npm run build` in frontend?");
+//   process.exit(1);
+// }
 
 app.listen(port, (error)=>{
   if(!error){
