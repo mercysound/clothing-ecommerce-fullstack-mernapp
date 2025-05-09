@@ -28,14 +28,7 @@ mongoose.connect(mongooseUri)
 //       res.sendFile(__dirname+"/build/index.html")
 //   })
   
-  // // Serve static files from React app
-  // app.use(express.static(path.join(__dirname, 'build')));
-  
-  // // Catch-all route to serve React app
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-  // });
-  
+ 
   
   // API Creation (Api endpoint)
   app.get("/", (req, res)=>{
@@ -294,14 +287,21 @@ app.post('/getcart', fetchUser, async (req, res)=>{
   let userData = await Users.findOne({_id:req.user.id})
   res.json({data:userData.cartData})
 })
-
-// app.listen(port, (error)=>{
-//   if(!error){
-//     console.log("Server Running on port" + port);
-//   }
-//   else
-//   {
-//     console.log("Error :" +error);
-//    }
-// })
-module.exports = app;
+ // Serve static files from React app
+ app.use(express.static(path.join(__dirname, 'build')));
+  
+ // Catch-all route to serve React app
+ app.get('*', (req, res) => {
+   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+ });
+ 
+app.listen(port, (error)=>{
+  if(!error){
+    console.log("Server Running on port" + port);
+  }
+  else
+  {
+    console.log("Error :" +error);
+   }
+})
+// module.exports = app;
