@@ -2,7 +2,6 @@ import React from 'react'
 import './Navbar.css'
 // import navlogo from '../../assets/';
 // import navlogo from '../../assets/nav-logo.svg';
-"../../assets/nav-logo.svg"
 import navProfile from '../../assets/nav-profile.svg';
 
 
