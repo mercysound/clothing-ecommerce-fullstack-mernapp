@@ -299,13 +299,21 @@ app.post('/getcart', fetchUser, async (req, res)=>{
 })
 
  
-// Serve static files from frontend
+// Serve static React app (main frontend)
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+// Serve static admin dashboard
+app.use("/admin", express.static(path.join(__dirname, "../admin-banner/dist")));
+
+// Catch-all for main React app
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
+// Catch-all for admin dashboard
+app.get("/admin/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../admin-banner/dist/index.html"));
+});
 // const fs = require("fs");
 // const buildPath = path.join(__dirname, "../frontend/build/index.html");
 
